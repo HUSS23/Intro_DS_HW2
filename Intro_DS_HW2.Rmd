@@ -17,7 +17,7 @@ if ((i %% 3 != 0) & (i %% 5 != 0) )  {print(i)}
 
 ## Problem 2 : Map 
 
-``` {r}
+``` {r, echo = FALSE}
 Teams = c("Real Madrid", "FC Barcelona", "Atlético Madrid", "Athletic Bilbao", "Valencia")   
 City = c("Madrid", "Barcelona", "Madrid", "Bilbao", "Valencia")
 Champions = c(33, 25, 10, 8, 6)
