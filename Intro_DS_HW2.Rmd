@@ -39,4 +39,30 @@ City_coord$City <- City
 
 City_coord
 
+library(htmltools)
+library(leaflet)
 
+m <- leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(lng=City_coord$lon, lat=City_coord$lat,
+                   radius = City_coord$Champions*1.5) %>%
+  addPopups(-3.7037902, 40.41678, paste(sep = "<br/>",
+                                        "<b> Real Madrid </b>",
+                                        33,
+                                        "<b> Atlético Madrid</b>",
+                                        10),
+            options = popupOptions(closeButton = FALSE)) %>% 
+  addPopups(2.1734035, 41.38506, paste(sep = "<br/>",
+                                        "<b> FC Barcelona </b>",
+                                        25),
+            options = popupOptions(closeButton = FALSE)) %>%
+  addPopups(-3.7037902, 43.26301, paste(sep = "<br/>",
+                                       "<b> Athletic Bilbao </b>",
+                                       8),
+            options = popupOptions(closeButton = FALSE)) %>% 
+  addPopups(-0.3762881, 39.46991, paste(sep = "<br/>",
+                                        "<b> Valencia </b>",
+                                        6),
+            options = popupOptions(closeButton = FALSE))
+  
+m
