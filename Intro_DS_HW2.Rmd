@@ -20,21 +20,14 @@ if ((i %% 3 != 0) & (i %% 5 != 0) )  {print(i)}
 ``` {r}
 
 Teams = c("Real Madrid", "FC Barcelona", "Atlético Madrid", "Athletic Bilbao", "Valencia")   
-
 City = c("Madrid", "Barcelona", "Madrid", "Bilbao", "Valencia")
- 
 Champions = c(33, 25, 10, 8, 6)
-       
 lon = c(-3.7037902, 2.1734035, -3.7037902, -3.7037902, -0.3762881)
-
 lat = c(40.41678, 41.38506, 40.41678, 43.26301, 39.46991)
 
 City_coord = data.frame(cbind(lon,lat))
-
 City_coord$Champions <- Champions
-
 City_coord$Teams <- Teams
-
 City_coord$City <- City
 
 City_coord
