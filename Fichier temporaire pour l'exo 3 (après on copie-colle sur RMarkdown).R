@@ -1,33 +1,38 @@
-# Initial position
-x0 <- runif(20, min = -9, max = 9)
-
 # Number of steps
-B = 150
+steps = 150
 
-#Number of bacteria
-N = 20
+# Initial matrix, made of "zeros"
+steps_steps <- matrix(NA, steps, 2)
 
-# Initialisation
-Xt = matrix(NA, nrow = B+1, ncol = N)
-Xt[1,] = x0
+# Creating array for 20 bacteria
+bacteria <- array(steps_steps, dim = c(steps, 2, 20))
 
-# Preliminary notation
-St <- runif(1, min = 0, max = 2)
-angle <- runif(1, min = 0, max = 2*pi)
-angles_matrix = matrix(angle, B+1, N)
+# Setting position 1
+bacteria[1,,] = runif(2, -9, 9)
+St = c(0, runif(149, 0, 2))
+St_matrix = matrix(St, steps, 2)
+angle = runif(149, 0, 2*pi)
+cos_and_sin = c(0, cos(angle), 0, sin(angle))
+cos_sin = matrix(cos_and_sin, steps, 2, byrow=FALSE)
+cos_sin_array = array(cos_sin, dim = c(steps, 2, 20))
 
-#Start for loop
-for (j in 1:N){
-  for (i in 1:B){
-    Xt[(i+1),j] = Xt[i,j] + St*angles_matrix[i,j]
-  }
-  
+
+# Plot
+plot(bacteria, xlim = c(-30, 30), ylim = c(-30, 30))
+for (i in 1:20){
+    points(bacteria[,,j])
 }
 
-# Plot 
-plot(NA, xlim = c(-11, 11), ylim = range(Xt))
-for (i in 1:N){
-  lines(Xt[,i], col = i)
-  Sys.sleep(1)
+
+
+# Start for loop
+for (j in 1:20){
+    for (i in seq(1, steps-1)){
+        bacteria[(i+1),1,j] = bacteria[i,1,j]+St_matrix[i+1,1]*cos_sin_array[i+1,1,j]
+        bacteria[(i+1),2,j] = bacteria[i,2,j]+St_matrix[i+1,2]*cos_sin_array[i+1,2,j]
+        points(bacteria)
+    }
 }
+
+
 
