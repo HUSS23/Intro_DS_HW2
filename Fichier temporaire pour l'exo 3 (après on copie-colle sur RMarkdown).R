@@ -2,13 +2,10 @@
 steps = 150
 
 # Initial matrix, made of "zeros"
-steps_steps <- matrix(NA, steps, 2)
-
-# Creating array for 20 bacteria
-bacteria <- array(steps_steps, dim = c(steps, 2, 20))
+steps_steps <- matrix(NA, steps, 40)
 
 # Setting position 1
-bacteria[1,,] = runif(2, -9, 9)
+steps_steps[1,] = runif(40, -9, 9)
 St = c(0, runif(149, 0, 2))
 St_matrix = matrix(St, steps, 2)
 angle = runif(149, 0, 2*pi)
@@ -22,6 +19,8 @@ plot(bacteria, xlim = c(-30, 30), ylim = c(-30, 30))
 for (i in 1:20){
     points(bacteria[,,j])
 }
+
+plot(steps_steps)
 
 
 
