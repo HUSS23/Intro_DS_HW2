@@ -60,5 +60,86 @@ m <- leaflet() %>%
 m
 ```
 
+## Problem 3
 
+The algorithm we used is this one :
+
+
+```{r, eval = FALSE}
+# Loading needed packages
+
+require(plotrix)
+require(emojifont)
+
+# Defining an array to store our data
+
+array_coordinates = array(NA, dim = c(150, 2, 20))
+
+for (i in 1:20){
+  x_axis = runif(1, -9, 9)
+  y_axis = runif(1, -9, 9)
+  vec_pos = c(x_axis, y_axis)
+  array_coordinates[1,,i] = vec_pos
+}
+
+
+# Start
+for (i in 1:149){
+  
+     for (j in 1:20){
+      St = c(runif(1, 0, 2))
+      angle = c(runif(1, 0, 2*pi))
+      cos_x = cos(angle)
+      sin_y = sin(angle)
+      array_coordinates[i+1,1,j] = array_coordinates[i,1,j] + St*cos_x
+      array_coordinates[i+1,2,j] = array_coordinates[i,2,j] + St*sin_y
+      }
+  }
+
+
+for (i in 1:149){
+  
+  # Graph options
+  color = "blue"
+  xlab = "X-position"
+  ylab = "Y-position"
+  pt_pch = 16
+  pt.cex = 2
+  hues = seq(15, 375, length = 3)
+  pt_col = hcl(h = hues, l = 65, c = 100)[1:2]
+  par(mar = c(5.1, 5.1, 1, 2.1))
+  
+  # Main plot
+  plot(NA,xlim =c(-10,10), 
+       ylim =c(-10,10), 
+       xlab ="X Position", 
+       ylab ="Y Position", main = "Bacteria Motility")
+  
+  
+  # Add grid
+  grid(NULL, NULL, lty = 1, col = "grey95")
+  
+  # Insert the "sugar" circle
+  circle = draw.circle(0, 0, radius = 3, col = "orange")
+  text(0, 0, labels = "SUGAR")
+  
+  for (j in 1:20){
+    lines(array_coordinates[1:i,1,j], array_coordinates[1:i,2,j], col = j)
+    points(array_coordinates[i,1,j], array_coordinates[i,2,j])
+    text(array_coordinates[i,1,j], array_coordinates[i,2,j], labels=emoji('alien'), family='EmojiOne')
+  }
+  Sys.sleep(.5)
+}
+```
+
+
+
+
+### These are the resulting bacteria!
+<center>
+![](C:\Users\Angel\Documents\GitHub\Intro_DS_HW2\Bacteria.gif)
+
+### And after 150 steps, this is the result!
+<center>
+![](C:\Users\Angel\Documents\GitHub\Intro_DS_HW2\Bacteria_end.gif)
 
