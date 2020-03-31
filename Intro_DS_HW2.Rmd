@@ -62,7 +62,7 @@ m
 
 ## Problem 3
 
-The algorithm we used is this one :
+The constructed algorithm is this one :
 
 
 ```{r, eval = FALSE}
