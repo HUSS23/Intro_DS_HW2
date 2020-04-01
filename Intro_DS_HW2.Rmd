@@ -140,6 +140,5 @@ for (i in 1:149){
 ![](C:\Users\Angel\Documents\GitHub\Intro_DS_HW2\Bacteria.gif)
 
 ### And after 150 steps, this is the result!
-<center>
-![](C:\Users\Angel\Documents\GitHub\Intro_DS_HW2\Bacteria_end.gif)
+
 
