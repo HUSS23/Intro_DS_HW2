@@ -137,8 +137,10 @@ for (i in 1:149){
 
 ### These are the resulting bacteria!
 <center>
-![](C:\Users\Angel\Documents\GitHub\Intro_DS_HW2\Bacteria.gif)
+![](Bacteria.gif)
 
 ### And after 150 steps, this is the result!
+<center>
+![](Bacteria_end.gif)
 
 
