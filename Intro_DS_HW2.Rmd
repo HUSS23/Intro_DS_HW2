@@ -6,12 +6,13 @@ output: html_document
 ## Problem 1: Fizz Buzz
 
 ```{r, echo=F}
+i = c()
 for (i in 1:1000){
-if ((i %% 3 != 0) & (i %% 5 != 0) )  {print(i)}
-  else if ((i %% 3 == 0) & (i %% 5 == 0)) {print("Fizz Buzz")}
-  else if (i %% 3 == 0) {print("Fizz")}
-  else if (i %% 5 == 0) {print("Buzz")}
-  else print(i)
+if ((i %% 3 != 0) & (i %% 5 != 0) )  {print(c(i))}
+  else if ((i %% 3 == 0) & (i %% 5 == 0)) {print(c("Fizz Buzz"))}
+  else if (i %% 3 == 0) {print(c("Fizz"))}
+  else if (i %% 5 == 0) {print(c("Buzz"))}
+  else print(c(i))
 }
 ```
 
@@ -85,15 +86,20 @@ for (i in 1:20){
 
 # Start
 for (i in 1:149){
-  
-     for (j in 1:20){
-      St = c(runif(1, 0, 2))
-      angle = c(runif(1, 0, 2*pi))
-      cos_x = cos(angle)
-      sin_y = sin(angle)
+  for (j in 1:20){
+    St = c(runif(1, 0, 2))
+    angle = c(runif(1, 0, 2*pi))
+    cos_x = cos(angle)
+    sin_y = sin(angle)
+    
+    if (sqrt(sum((array_coordinates[i,,j])^2)) <= 3){
+      array_coordinates[i+1,1,j] = array_coordinates[i,1,j] 
+      array_coordinates[i+1,2,j] = array_coordinates[i,2,j]
+    }else{
       array_coordinates[i+1,1,j] = array_coordinates[i,1,j] + St*cos_x
       array_coordinates[i+1,2,j] = array_coordinates[i,2,j] + St*sin_y
-      }
+    }
+    }
   }
 
 
@@ -137,10 +143,10 @@ for (i in 1:149){
 
 ### These are the resulting bacteria!
 <center>
-![](Bacteria.gif)
+![](Bacteria_starting.gif)
 
 ### And after 150 steps, this is the result!
 <center>
-![](Bacteria_end.gif)
+![](Bacteria_ending.gif)
 
 
